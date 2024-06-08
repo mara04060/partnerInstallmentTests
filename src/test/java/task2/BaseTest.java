@@ -2,8 +2,10 @@ package task2;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.*;
 import task2.model.ModelOrders;
+
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class BaseTest {
 
