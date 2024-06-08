@@ -2,7 +2,7 @@ package task2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-    public class ModelData implements ModelJson {
+    public class ModelOrderIsCart implements ModelJson {
         @JsonProperty("order_id")
         private String orderId;
 
@@ -31,9 +31,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
         @Override
         public String toString() {
-            return "\t (ModelData)  {" +
-                    "\n \t \t order_id='" + orderId + '\'' +
-                    ", \n \t \t message_id='" + messageId + '\'' +
+            return "\t /* ModelOrderIsCart */  {" +
+                    "\n \t \t order_id: '" + orderId + '\'' +
+                    ", \n \t \t message_id: '" + messageId + '\'' +
                     "\n \t }";
         }
     }

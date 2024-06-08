@@ -3,12 +3,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 
-public class ModelDataAll implements ModelJson {
+public class ModelIsCartData implements ModelJson {
         @JsonProperty("isCardAccount")
         private Boolean isCardAccount;
 
         @JsonProperty("data")
-        private ModelData data;
+        private ModelOrderIsCart data;
 
         @JsonProperty("isRevaluation")
         private Boolean isRevaluation;
@@ -37,12 +37,12 @@ public class ModelDataAll implements ModelJson {
         }
 
         @JsonProperty("data")
-        public ModelData getData() {
+        public ModelOrderIsCart getData() {
             return data;
         }
 
         @JsonProperty("data")
-        public void setData(ModelData data) {
+        public void setData(ModelOrderIsCart data) {
             this.data = data;
         }
 
@@ -98,14 +98,14 @@ public class ModelDataAll implements ModelJson {
 
         @Override
         public String toString() {
-            return "ModelDataAll {" +
-                    "\n \tisCardAccount=" + isCardAccount +
-                    ", \n \tdata=" + data +
-                    ", \n \tisRevaluation=" + isRevaluation +
-                    ", \n \tuserId=" + userId +
-                    ", \n \tuserLogin='" + userLogin + '\'' +
-                    ", \n \tdocIds=" + Arrays.toString(docIds) +
-                    ", \n \tlocale='" + locale + '\'' +
+            return "/* ModelIsCartData */{" +
+                    "\n \tisCardAccount: " + isCardAccount +
+                    ", \n \tdata: " + data +
+                    ", \n \tisRevaluation: " + isRevaluation +
+                    ", \n \tuserId: " + userId +
+                    ", \n \tuserLogin: '" + userLogin + '\'' +
+                    ", \n \tdocIds: " + Arrays.toString(docIds) +
+                    ", \n \tlocale: '" + locale + '\'' +
                     "\n}";
         }
     }

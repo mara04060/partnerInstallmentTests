@@ -6,7 +6,7 @@ import task2.model.ModelOrders;
 
 import java.io.IOException;
 
-public class OrderPositiveTest {
+public class OrderAllTest {
     @Test(groups = {"POSITIVE", "FULL_PROCES",  "ALL"}, priority = 10, timeOut = 15600L, testName = "Positive Create|Get|Clear - Method API Order")
     public static void createOrderPositiveTest() throws IOException {
 

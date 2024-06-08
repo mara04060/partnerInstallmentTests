@@ -1,9 +1,8 @@
 package task2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
 
-    public class ModelUserData {
+public class ModelUserIsCartData {
         @JsonProperty("isCard")
         private Boolean isCard;
 
@@ -61,9 +60,9 @@ import java.util.ArrayList;
         public String toString() {
             return "{\n" +
                     "\n \t isCard=" + isCard +
-                    ", \n \t userPass='" + userPass + '\'' +
-                    ", \n \t userLogin='" + userLogin + '\'' +
-                    ", \n \t locale='" + locale + '\'' +
+                    ", \n \t userPass: '" + userPass + '\'' +
+                    ", \n \t userLogin: '" + userLogin + '\'' +
+                    ", \n \t locale: '" + locale + '\'' +
                     "}\n";
         }
     }

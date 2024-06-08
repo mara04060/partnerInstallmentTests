@@ -10,7 +10,7 @@ public class MainParser {
         String json = "{\"isCardAccount\":false,\"data\":{\"order_id\":\"p100\"," +
                 "\"message_id\":\"EB4BFBBCA7167857E0539B5A8F0ACB76\"},\"isRevaluation\":false," +
                 "\"userId\":20069,\"userLogin\":\"55555F3\",\"docIds\":[597405],\"locale\":\"UA\"}\"\n";
-        ModelJson modelOne= JsonToPojo.parse(json, ModelDataAll.class);
+        ModelJson modelOne= new JsonToPojo().parse(json, ModelIsCartData.class);
         System.out.println("========================");
         System.out.println("======= Task* 2.1 ==========");
         System.out.println("--Data Input " + json);
@@ -20,7 +20,7 @@ public class MainParser {
 
         json = "[{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"55555F3\",\"locale\":\"UA\"}," +
                 "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"11111F3\",\"locale\":\"UK\"}]";
-        Object ModelTwo = JsonToPojo.parseList(json, new TypeReference<List<ModelUserData>>(){});
+        Object ModelTwo = new JsonToPojo().parseList(json, new TypeReference<List<ModelUserIsCartData>>(){});
         System.out.println("======= Task* 2.2 ==========");
         System.out.println("--Data Input " + json);
         System.out.println("Data OutPut:");
