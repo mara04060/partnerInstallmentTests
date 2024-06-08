@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "orderAdd": {
+      "type": "string"
+    },
+    "orderId": {
+      "type": "string"
+    },
+    "messageId": {
+      "type": "string"
+    },
+    "orderVat": {
+      "type": "string"
+    },
+    "orderSum": {
+      "type": "string"
+    },
+    "orderNom": {
+      "type": "array",
+      "items": {}
+    },
+    "orderTerm": {
+      "type": "string"
+    },
+    "panEnd": {
+      "type": "string"
+    },
+    "statusText": {
+      "type": "string"
+    },
+    "mPhone": {
+      "type": "string"
+    },
+    "shopId": {
+      "type": "string"
+    },
+    "statusCode": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "orderAdd",
+    "orderId",
+    "messageId",
+    "orderVat",
+    "orderSum",
+    "orderNom",
+    "orderTerm",
+    "panEnd",
+    "statusText",
+    "mPhone",
+    "shopId",
+    "statusCode"
+  ]
+}

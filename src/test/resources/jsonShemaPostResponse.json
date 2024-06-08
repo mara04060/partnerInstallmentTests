@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "statusCode": {
+      "type": "string"
+    },
+    "statusText": {
+      "type": "string"
+    },
+    "messageId": {
+      "type": "string"
+    },
+    "orderId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "statusCode",
+    "statusText",
+    "messageId",
+    "orderId"
+  ]
+}
