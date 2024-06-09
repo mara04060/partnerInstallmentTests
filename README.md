@@ -30,9 +30,7 @@
 ,"userPass":"test","userLogin":"11111F3","locale":"UK"}]"</code>
 <p />При выполнении задания использовать библиотеки: RestAssured, Jackson JSON</p>
 <h2>Решение</h2>
-  <p>
-
-    Решение Первой задачи находиться в тестах: OrderAllTest <b>partnerInstallment\src\test\java\task2</b>
+  <p>Решение Первой задачи находиться в тестах: OrderAllTest <b>partnerInstallment\src\test\java\task2</b>
 <br />В качестве негативныхсценариев были выбранны методы:
     <br /> - <b>createOrder</b> при некорректном названии партнера
     <br /> - <b>getOrder</b> Без передачи индентификатора IDS
