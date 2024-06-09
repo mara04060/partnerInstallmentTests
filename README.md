@@ -29,9 +29,17 @@
 ,"userPass":"test","userLogin":"55555F3","locale":"UA"},{"isCard"
 ,"userPass":"test","userLogin":"11111F3","locale":"UK"}]"</code>
 <p />При выполнении задания использовать библиотеки: RestAssured, Jackson JSON</p>
+<h2>Решение</h2>
   <p>
-    Решение Перврй задачи находиться в тестах <b>partnerInstallment\src\test\java\task2</b>
-    Решение задачи по парсингу JSON находиться в  <b>partnerInstallment\src\main\java\task2</b>
-  </p>
+
+    Решение Первой задачи находиться в тестах: OrderAllTest <b>partnerInstallment\src\test\java\task2</b>
+<br />В качестве негативныхсценариев были выбранны методы:
+    <br /> - <b>createOrder</b> при некорректном названии партнера
+    <br /> - <b>getOrder</b> Без передачи индентификатора IDS
+    <br /> - <b>getOrder</b> Без передачи индентификатора MESSAGE_ID
+    <br /> - <b>confirmOrder</b> Без передачи состояния заказа - Невозможно обработать REQUEST_NOT_MATCH
+     </p>
+   <p> Решение задачи по парсингу JSON находиться в MainParser <b>partnerInstallment\src\main\java\task2</b></p>
+ 
 </body>
 </html>
