@@ -29,5 +29,9 @@
 ,"userPass":"test","userLogin":"55555F3","locale":"UA"},{"isCard"
 ,"userPass":"test","userLogin":"11111F3","locale":"UK"}]"</code>
 <p />При выполнении задания использовать библиотеки: RestAssured, Jackson JSON</p>
+  <p>
+    Решение Перврй задачи находиться в тестах <b>partnerInstallment\src\test\java\task2</b>
+    Решение задачи по парсингу JSON находиться в  <b>partnerInstallment\src\main\java\task2</b>
+  </p>
 </body>
 </html>
