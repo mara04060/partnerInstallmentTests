@@ -16,23 +16,19 @@ public class OrderAllTest {
 
         ModelOrders firstResponse = new BaseTest().methodPost(
                 "createOrder/" + ServiceData.getPartner(),
-                StabDataTest1.getCreateStabInput("+380967896608",
-                        "9654",
-                        "46546-БwfqК",
-                        ServiceData.getOrderId(),
-                        "121600",
-                        "9",
-                        "test@mytestemail.com",
-                        "https://dpartnapu01.sensebank.com.ua:8243/installmentseventwo/orders")
-
+                StabDataTest1.getCreateStabInput(ServiceData.getMPhone(),
+                            ServiceData.getPanEnd(),
+                            ServiceData.getShopId(),
+                            ServiceData.getOrderId(),
+                            ServiceData.getOrderSum(),
+                            ServiceData.getOrderTerm(),
+                            ServiceData.getOrderTerm(),
+                            ServiceData.getCalBackUrlr()
+                    )
                 );
+        Assert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.IN_PROCESSING.toString() );
 
-        Assert.assertEquals(firstResponse.getStatusCode(), "IN_PROCESSING" );
-//        Все тоже но в одну строку:
-//        Assert.assertEquals(new BaseTest().methodPost(
-//                "createOrder/" + ServiceData.getPartner(),
-//                StabDataTest1.getCreateStabInput(orderIdIn)
-//        ).getStatusCode(), "IN_PROCESSING" );
+//        Ожидание между 2 мя запросами
         ServiceData.sleepMode(2);
 
 // Step-2
@@ -40,12 +36,13 @@ public class OrderAllTest {
         ModelOrders twoRespose = new BaseTest().methodGet(
                 "getOrder/" + ServiceData.getPartner()
                         +"/" + ServiceData.getPartner()
-                        +"/?orderId=" + firstResponse.getOrderId()
+                        +"/?orderId=" + firstResponse.getOrderId() +"&messageId="+firstResponse.getMessageId()
                     );
 
         Assert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
-        Assert.assertEquals(twoRespose.getStatusCode(), "INST_ALLOWED_OK");
+        Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
 
+//        Ожидание между 2 мя запросами
         ServiceData.sleepMode(2);
 
 
@@ -58,13 +55,13 @@ public class OrderAllTest {
                             twoRespose.getOrderId(),
                             null,
                             "cancelP"+twoRespose.getOrderId(),
-                            "відмова клієнта")
+                            ServiceData.getReasonCancel())
         );
         ModelOrders expected = new ModelOrders(
                 twoRespose.getOrderId(),
                 null,
                 "Отмена заказа с номером "+ firstResponse.getOrderId() + " в обработке.",
-                "CANCEL_IS_OK");
+                ServiceData.StatusCode.CANCEL_IS_OK.toString() );
 
         Assert.assertEquals(requestClear.getStatusCode(), expected.getStatusCode());
         Assert.assertEquals(requestClear.getStatusText(), expected.getStatusText());
@@ -77,17 +74,18 @@ public class OrderAllTest {
 
         ModelOrders firstResponse = new BaseTest().methodPost(
                 "createOrder/partnr",
-                StabDataTest1.getCreateStabInput("+380967896608",
-                        "9654",
-                        "46546-БwfqК",
+                StabDataTest1.getCreateStabInput(ServiceData.getMPhone(),
+                        ServiceData.getPanEnd(),
+                        ServiceData.getShopId(),
                         "p01",
-                        "121600",
-                        "9",
-                        "test@mytestemail.com",
-                        "https://dpartnapu01.sensebank.com.ua:8243/installmentseventwo/orders")
+                        ServiceData.getOrderSum(),
+                        ServiceData.getOrderTerm(),
+                        ServiceData.getEMailPartner(),
+                        ServiceData.getCalBackUrlr()
+                )
 
         );
-        Assert.assertEquals(firstResponse.getStatusCode(), "NO_PARTNERID");
+        Assert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.NO_PARTNERID.toString() );
         ServiceData.sleepMode(2);
     }
     @Test(groups = {"NEGATIVE",  "GET_ORDER", "ALL"}, priority = 70, timeOut = 15600L, testName = "Negative getOrder NO_IDS - Не передано ідентифікатор замовлення")
@@ -99,13 +97,13 @@ public class OrderAllTest {
                         +"/" + ServiceData.getPartner()
                         +"/?orderId="
         );
-        Assert.assertEquals(twoRespose.getStatusCode(), "NO_IDS");
+        Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.NO_IDS.toString());
         ServiceData.sleepMode(2);
     }
 
     @Test(groups = {"NEGATIVE", "GET_ORDER", "ALL"}, priority = 80, timeOut = 15600L, testName = "Negative getOrder NO_APP - Не передано ідентифікатор замовлення")
     public static void getOrderNoAppNegativeTest() throws IOException {
-        System.out.println(" Negative getOrder NO_APP - Не передано ідентифікатор замовлення ");
+        System.out.println(" Negative getOrder NO_APP - Не передано ідентифікатор замовлення");
         String orderIdIn = "p03";
         String messageIdIn = "B8F3737EE0712C81E0539B5A8F0854E7";
         ModelOrders twoRespose = new BaseTest().methodGet(
@@ -113,7 +111,7 @@ public class OrderAllTest {
                         +"/" + ServiceData.getPartner()
                         +"/?orderId="+orderIdIn+"&messageId="+messageIdIn
         );
-        Assert.assertEquals(twoRespose.getStatusCode(), "NO_APP");
+        Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.NO_APP.toString());
         ServiceData.sleepMode(2);
     }
 
@@ -129,6 +127,6 @@ public class OrderAllTest {
                         null
                 )
         );
-        Assert.assertEquals(confirmResponse.getStatusCode(), "REQUEST_NOT_MATCH");
+        Assert.assertEquals(confirmResponse.getStatusCode(), ServiceData.StatusCode.REQUEST_NOT_MATCH.toString());
     }
 }

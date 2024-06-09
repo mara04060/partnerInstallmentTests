@@ -1,6 +1,6 @@
 package task2.model;
 
-import com.fasterxml.jackson.annotation.*;
+import task2.ServiceData;
 
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class ModelOrders {
         private String callBackURL;
 
 
-        public ModelOrders(){}
+        public ModelOrders(){};
 
         public ModelOrders( String orderId,
                             String messageId,
@@ -94,7 +94,10 @@ public class ModelOrders {
                 this.reasonCancel = reasonCancel;
         }
 
-        public String getOrderId() {
+    public ModelOrders(String orderId, String messageId, String statusText, ServiceData.StatusCode cancelIsOk) {
+    }
+
+    public String getOrderId() {
                 return orderId;
         }
 

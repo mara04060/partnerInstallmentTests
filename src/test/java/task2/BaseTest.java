@@ -5,7 +5,6 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.*;
 import task2.model.ModelOrders;
 
-import static org.hamcrest.core.IsEqual.equalTo;
 
 public class BaseTest {
 
