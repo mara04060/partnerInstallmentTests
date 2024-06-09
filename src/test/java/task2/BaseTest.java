@@ -7,7 +7,6 @@ import task2.model.ModelOrders;
 
 
 public class BaseTest {
-
     private RequestSpecification startRequestSpecificatiuon(){
         return RestAssured.given()
                     .baseUri(ServiceData.getBaseUrl())

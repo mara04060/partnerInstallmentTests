@@ -37,6 +37,17 @@ public class ModelOrders {
                 this.statusText = statusText;
                 this.statusCode = statusCode;
         }
+        public ModelOrders(String orderId,
+                           String messageId,
+                           String cancelId,
+                           String reasonCancel,
+                           String statusCode) {
+            this.orderId = orderId;
+            this.messageId = messageId;
+            this.statusCode = statusCode;
+            this.cancelId = cancelId;
+            this.reasonCancel = reasonCancel;
+        }
         public ModelOrders (String mPhone,
                               String panEnd,
                               String shopId,
@@ -54,6 +65,7 @@ public class ModelOrders {
                 this.eMailPartner = eMailPartner;
                 this.callBackURL = callBackURL;
         }
+
         public ModelOrders(
                 String orderId,
                 String messageId,
@@ -82,17 +94,7 @@ public class ModelOrders {
                 this.statusCode = statusCode;
         }
 
-        public ModelOrders(String orderId,
-                           String messageId,
-                           String cancelId,
-                           String reasonCancel,
-                           String statusCode) {
-                this.orderId = orderId;
-                this.messageId = messageId;
-                this.statusCode = statusCode;
-                this.cancelId = cancelId;
-                this.reasonCancel = reasonCancel;
-        }
+
 
     public ModelOrders(String orderId, String messageId, String statusText, ServiceData.StatusCode cancelIsOk) {
     }

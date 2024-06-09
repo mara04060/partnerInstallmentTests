@@ -88,7 +88,7 @@ public class ServiceData {
 
     public static void sleepMode(int time){
         try {
-            Thread.sleep(time*1000); // Время указывается в миллисекундах
+            Thread.sleep(time * 1000); // Время указывается в миллисекундах
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

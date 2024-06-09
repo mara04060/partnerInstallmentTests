@@ -83,13 +83,11 @@ public class OrderAllTest {
                         ServiceData.getEMailPartner(),
                         ServiceData.getCalBackUrlr()
                 )
-
         );
         Assert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.NO_PARTNERID.toString() );
-        ServiceData.sleepMode(2);
     }
     @Test(groups = {"NEGATIVE",  "GET_ORDER", "ALL"}, priority = 70, timeOut = 15600L, testName = "Negative getOrder NO_IDS - Не передано ідентифікатор замовлення")
-    public static void getOrderNoIdsNegativeTest() throws IOException {
+    public static void getOrderNoIdsNegativeTest() {
         System.out.println("Negative getOrder NO_IDS - Не передано ідентифікатор замовлення");
 
         ModelOrders twoRespose = new BaseTest().methodGet(
@@ -98,11 +96,10 @@ public class OrderAllTest {
                         +"/?orderId="
         );
         Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.NO_IDS.toString());
-        ServiceData.sleepMode(2);
     }
 
     @Test(groups = {"NEGATIVE", "GET_ORDER", "ALL"}, priority = 80, timeOut = 15600L, testName = "Negative getOrder NO_APP - Не передано ідентифікатор замовлення")
-    public static void getOrderNoAppNegativeTest() throws IOException {
+    public static void getOrderNoAppNegativeTest() {
         System.out.println(" Negative getOrder NO_APP - Не передано ідентифікатор замовлення");
         String orderIdIn = "p03";
         String messageIdIn = "B8F3737EE0712C81E0539B5A8F0854E7";

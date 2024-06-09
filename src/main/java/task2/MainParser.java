@@ -16,14 +16,20 @@ public class MainParser {
         System.out.println("--Data Input " + json);
         System.out.println("Data OutPut:");
         System.out.println(modelOne);
+        System.out.println("Unparsingt:");
+        System.out.println( new JsonToPojo().unParse((modelOne) ) );
 
 
         json = "[{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"55555F3\",\"locale\":\"UA\"}," +
-                "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"11111F3\",\"locale\":\"UK\"}]";
-        Object ModelTwo = new JsonToPojo().parseList(json, new TypeReference<List<ModelUserIsCartData>>(){});
+                "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"11111F3\",\"locale\":\"UK\"}," +
+                "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}," +
+        "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}" + "]";
+        List<ModelUserDataJson> ModelTwo = new JsonToPojo().parseList(json, new TypeReference<List<ModelUserIsCartData>>(){});
         System.out.println("======= Task* 2.2 ==========");
         System.out.println("--Data Input " + json);
         System.out.println("Data OutPut:");
         System.out.println(ModelTwo);
+        System.out.println("Unparsingt:");
+        System.out.println( new JsonToPojo().unParseList((ModelTwo) ) );
     }
 }
