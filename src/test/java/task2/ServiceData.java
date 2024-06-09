@@ -39,6 +39,7 @@ public class ServiceData {
         IN_PROCESSING,
 
         REQUEST_NOT_MATCH,
+        GUARANTEE_IS_FAIL,
         NO_APP,
         NO_IDS,
         INST_ALLOWED_OK,
