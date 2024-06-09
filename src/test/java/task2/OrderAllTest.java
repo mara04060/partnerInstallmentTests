@@ -71,29 +71,47 @@ public class OrderAllTest {
     @DataProvider(name = "postOrderTest")
     public Object[][] postOrderDataTest() {
         return new Object[][] {
-           {    ServiceData.getMPhone(),
+            {   "partnr",
+                ServiceData.getMPhone(),
                 ServiceData.getPanEnd(),
                 ServiceData.getShopId(),
                 "p01",
                 ServiceData.getOrderSum(),
                 ServiceData.getOrderTerm(),
                 ServiceData.getEMailPartner(),
-                ServiceData.getCalBackUrlr()   }
+                ServiceData.getCalBackUrlr(),
+                ServiceData.StatusCode.NO_PARTNERID.toString()
+            },
+
+            {   ServiceData.getPartner(),
+                ServiceData.getMPhone(),
+                "965",
+                ServiceData.getShopId(),
+                "p15",
+                "1216.00",
+                ServiceData.getOrderTerm(),
+                ServiceData.getEMailPartner(),
+                ServiceData.getCalBackUrlr() ,
+                ServiceData.StatusCode.MATCH_ORDERID.toString()
+            }
         };
     }
-    @Test(groups = {"NEGATIVE", "CREATE_ORDER", "ALL"}, priority = 50, dataProvider = "postOrderTest",timeOut = 15600L, testName = "Negative Create- Партнер 'partnr' не зареєстрований у системі!")
-    public static void createOrderNegativeTest(String mPhone,
-                                               String panEnd,
-                                               String shopId,
-                                               String orderId,
-                                               String orderSum,
-                                               String orderTerm,
-                                               String eMailPartner,
-                                               String calBackUrl) throws IOException {
+    @Test(groups = {"NEGATIVE", "CREATE_ORDER", "ALL"}, priority = 50, dataProvider = "postOrderTest",timeOut = 15600L, testName = "Negative CreateOrder")
+    public static void createOrderNegativeTest(
+           String partner,
+           String mPhone,
+           String panEnd,
+           String shopId,
+           String orderId,
+           String orderSum,
+           String orderTerm,
+           String eMailPartner,
+           String calBackUrl,
+           String expectedStatusCode) throws IOException {
 
 
         Assert.assertEquals( new BaseTest().methodPost(
-                "createOrder/partnr",
+                "createOrder/"+partner,
                 DataProviderMethod.getCreateOrderDataInput(
                         mPhone,
                         panEnd,
@@ -104,7 +122,7 @@ public class OrderAllTest {
                         eMailPartner,
                         calBackUrl
                 )
-        ).getStatusCode(), ServiceData.StatusCode.NO_PARTNERID.toString() );
+        ).getStatusCode(), expectedStatusCode );
     }
     @DataProvider(name = "getOrderTest1")
     public Object[][] getOrderDataTest1() {
