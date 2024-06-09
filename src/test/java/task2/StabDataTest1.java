@@ -5,16 +5,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import task2.model.ModelOrders;
 
 public class StabDataTest1 {
-    public static String getCreateStabInput(String orderId) throws JsonProcessingException {
+    public static String getCreateStabInput(String mPhone,
+                                            String panEnd,
+                                            String shopId,
+                                            String orderId,
+                                            String orderSum,
+                                            String orderTerm,
+                                            String eMailPartner,
+                                            String calBackUrl) throws JsonProcessingException {
         return  new ObjectMapper().writeValueAsString(new ModelOrders(
-                "+380967896608",
-                "9654",
-                "46546-БwfqК",
+                mPhone,
+                panEnd,
+                shopId,
                 orderId,
-                "121600",
-                "9",
-                "test@mytestemail.com",
-                "https://dpartnapu01.sensebank.com.ua:8243/installmentseventwo/orders"
+                orderSum,
+                orderTerm,
+                eMailPartner,
+                calBackUrl
         ));
     }
 
@@ -25,19 +32,6 @@ public class StabDataTest1 {
                 cancelId,
                 statusCode
         ));
-    }
-
-    /** Example
-     *
-     * @return ModelOrders  POJO
-     */
-    public static ModelOrders  getCreateActualStabOutput(){
-        return new ModelOrders(
-                "NO_APP",
-                "Заказ не найден!",
-                "19E9833406F9423AE0639B5A8F0A61FC",
-                "p12"
-        );
     }
 
     public static String getClearStabInput(String orderId,

@@ -17,14 +17,6 @@ public class ServiceData {
         }
     }
 
-    public static void sleepMode(int time){
-        try {
-            Thread.sleep(time*1000); // Время указывается в миллисекундах
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     static String getBaseUrl() {
         return properties.getProperty("api.url");
     }
@@ -36,9 +28,19 @@ public class ServiceData {
     static String getPassword() {
         return properties.getProperty("api.password");
     }
-
     static String getPartner() {
         return properties.getProperty("api.partner");
+    }
+    static String getOrderId() {
+        return properties.getProperty("api.orderid");
+    }
+
+    public static void sleepMode(int time){
+        try {
+            Thread.sleep(time*1000); // Время указывается в миллисекундах
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

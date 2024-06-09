@@ -11,12 +11,20 @@ public class OrderAllTest {
     public static void createOrderPositiveTest() throws IOException {
 
 // Step-1
-        String orderIdIn = "p29";
+
         System.out.println("Step1---Post:");
 
         ModelOrders firstResponse = new BaseTest().methodPost(
                 "createOrder/" + ServiceData.getPartner(),
-                StabDataTest1.getCreateStabInput(orderIdIn)
+                StabDataTest1.getCreateStabInput("+380967896608",
+                        "9654",
+                        "46546-БwfqК",
+                        ServiceData.getOrderId(),
+                        "121600",
+                        "9",
+                        "test@mytestemail.com",
+                        "https://dpartnapu01.sensebank.com.ua:8243/installmentseventwo/orders")
+
                 );
 
         Assert.assertEquals(firstResponse.getStatusCode(), "IN_PROCESSING" );
@@ -65,12 +73,19 @@ public class OrderAllTest {
     @Test(groups = {"NEGATIVE", "CREATE_ORDER", "ALL"}, priority = 50, timeOut = 15600L, testName = "Negative Create- Партнер 'partnr' не зареєстрований у системі!")
     public static void createOrderNegativeTest() throws IOException {
 
-        String orderIdIn = "p01";
         System.out.println("Negative Create- Партнер 'partnr' не зареєстрований у системі!");
 
         ModelOrders firstResponse = new BaseTest().methodPost(
                 "createOrder/partnr",
-                StabDataTest1.getCreateStabInput(orderIdIn)
+                StabDataTest1.getCreateStabInput("+380967896608",
+                        "9654",
+                        "46546-БwfqК",
+                        "p01",
+                        "121600",
+                        "9",
+                        "test@mytestemail.com",
+                        "https://dpartnapu01.sensebank.com.ua:8243/installmentseventwo/orders")
+
         );
         Assert.assertEquals(firstResponse.getStatusCode(), "NO_PARTNERID");
         ServiceData.sleepMode(2);
