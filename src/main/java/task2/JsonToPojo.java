@@ -24,7 +24,7 @@ public class JsonToPojo {
         return new ObjectMapper().readValue(json.getBytes(), className) ;
     }
 
-    public  String unParseList(List<InterfaceJsonList> model) throws JsonProcessingException {
+    public  <T> String unParseList(List<T> model) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(model.toArray());
     }
 

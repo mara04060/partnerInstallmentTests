@@ -26,12 +26,12 @@ public class MainParser {
                 "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}," +
         "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}" + "]";
         List<ModelUserIsCardData> ModelTwo = new JsonToPojo()
-                .parseList( json, new TypeReference<List<ModelUserIsCardData>>(){});
+                .parseList( json, new TypeReference<>(){});
         System.out.println("======= Task* 2.2 ==========");
         System.out.println("--Data Input " + json);
         System.out.println("Data OutPut:");
         System.out.println(ModelTwo.toString());
         System.out.println("Unparsingt:");
-//        System.out.println( new JsonToPojo().unParseList((ModelTwo) ) );
+        System.out.println( new JsonToPojo().unParseList((ModelTwo) ) );
     }
 }
