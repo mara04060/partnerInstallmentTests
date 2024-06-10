@@ -3,12 +3,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 
-public class ModelIsCartData implements ModelJson {
+public class ModelIsCardData implements InterfaceJson{
         @JsonProperty("isCardAccount")
         private Boolean isCardAccount;
 
         @JsonProperty("data")
-        private ModelOrderIsCart data;
+        private ModelDocIds data;
 
         @JsonProperty("isRevaluation")
         private Boolean isRevaluation;
@@ -33,16 +33,16 @@ public class ModelIsCartData implements ModelJson {
 
         @JsonProperty("isCardAccount")
         public void setCardAccount(Boolean cardAccount) {
-            isCardAccount = cardAccount;
+            this.isCardAccount = cardAccount;
         }
 
         @JsonProperty("data")
-        public ModelOrderIsCart getData() {
+        public ModelDocIds getData() {
             return data;
         }
 
         @JsonProperty("data")
-        public void setData(ModelOrderIsCart data) {
+        public void setData(ModelDocIds data) {
             this.data = data;
         }
 
@@ -53,7 +53,7 @@ public class ModelIsCartData implements ModelJson {
 
         @JsonProperty("isRevaluation")
         public void setRevaluation(boolean revaluation) {
-            isRevaluation = revaluation;
+            this.isRevaluation = revaluation;
         }
 
         @JsonProperty("userId")

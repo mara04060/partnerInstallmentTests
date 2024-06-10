@@ -11,9 +11,6 @@ public class OrderAllTest {
     public static void createOrderPositiveTest() throws IOException {
 
 // Step-1
-
-        System.out.println("Step1---Post:");
-
         ModelOrders firstResponse = new BaseTest().methodPost(
                 "createOrder/" + ServiceData.getPartner(),
                 DataProviderMethod.getCreateOrderDataInput(
@@ -29,7 +26,6 @@ public class OrderAllTest {
                 );
         Assert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.IN_PROCESSING.toString() );
 
-//        Ожидание между 2 мя запросами
         ServiceData.sleepMode(2);
 
 // Step-2
@@ -43,13 +39,9 @@ public class OrderAllTest {
         Assert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
         Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
 
-//        Ожидание между 2 мя запросами
         ServiceData.sleepMode(2);
 
-
 // Step-3
-        System.out.println("Step3---Post:");
-
         ModelOrders requestClear = new BaseTest().methodPost(
                 "cancelOrder/" + ServiceData.getPartner(),
                 DataProviderMethod.getCleaOrderDataInput(

@@ -7,25 +7,24 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class JsonToPojo {
 
-    public  ModelJson parse(String json, Class<ModelIsCartData> className ) throws IOException {;
-        return (ModelJson) new ObjectMapper().readValue(json.getBytes(), className);
+    public InterfaceJson parse(String json, Class className ) throws IOException {;
+        return (InterfaceJson) new ObjectMapper().readValue(json.getBytes(), className);
     }
 
-    public  String unParse(ModelJson model) throws JsonProcessingException {
+    public  String unParse(InterfaceJson model) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(model);
     }
 
-    public List<ModelUserDataJson> parseList(String json,  TypeReference className ) throws IOException {;
-        return (List<ModelUserDataJson>) new ObjectMapper().readValue(json.getBytes(), className);
+    public List<ModelUserIsCardData> parseList(String json, TypeReference<List<ModelUserIsCardData>> className ) throws IOException {
+        return new ObjectMapper().readValue(json.getBytes(),  className) ;
     }
 
-    public  String unParseList(List<ModelUserDataJson> model) throws JsonProcessingException {
+    public  String unParseList(List<InterfaceJsonList> model) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(model.toArray());
     }
 

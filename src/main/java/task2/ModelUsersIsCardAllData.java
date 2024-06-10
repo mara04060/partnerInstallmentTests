@@ -5,24 +5,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 
-public class ModelUsersIsCartAllData {
+public class ModelUsersIsCardAllData implements InterfaceJsonList {
         @JsonProperty("modelUserData")
-        private List<ModelUserIsCartData> modelUserData;
+        private List<ModelUserIsCardData> modelUserData;
 
         @JsonProperty("modelUserData")
-        public List<ModelUserIsCartData> getUserData() {
+        public List<ModelUserIsCardData> getUserData() {
             return this.modelUserData;
         }
 
         @JsonProperty("modelUserData")
-        public void ModelUserData(List<ModelUserIsCartData> userData) {
+        public void ModelUserData(List<ModelUserIsCardData> userData) {
             this.modelUserData = userData;
         }
 
-    public ModelUsersIsCartAllData(List<ModelUserIsCartData> modelUserData) {
+    public ModelUsersIsCardAllData(List<ModelUserIsCardData> modelUserData) {
         this.modelUserData = modelUserData;
     }
-    public ModelUsersIsCartAllData(){}
+    public ModelUsersIsCardAllData(){}
 
     @Override
             public String toString() {
