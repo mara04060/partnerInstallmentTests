@@ -1,8 +1,8 @@
-package task2;
+package task2.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ModelUserIsCardData {
+public class UserIsCardData {
         @JsonProperty("isCard")
         private Boolean isCard;
 

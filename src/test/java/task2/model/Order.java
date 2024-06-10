@@ -3,59 +3,57 @@ package task2.model;
 import task2.ServiceData;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ModelOrders {
+public class Order {
         private String orderId;
         private String messageId;
         private String statusCode;
         private String statusText;
-
         private String orderVat;
         private String orderSum;
         private String cancelId;
         private String reasonCancel;
-        private ArrayList<Object> orderNom;
+        private List<Object> orderNom;
         private String orderTerm;
         private String panEnd;
-
         private String mPhone;
         private String shopId;
-
         private String orderAdd;
         private String eMailPartner;
         private String callBackURL;
 
 
-        public ModelOrders(){};
+        public Order(){};
 
-        public ModelOrders( String orderId,
-                            String messageId,
-                            String statusText,
-                            String statusCode){
+        public Order(String orderId,
+                     String messageId,
+                     String statusText,
+                     String statusCode){
                 this.orderId = orderId;
                 this.messageId = messageId;
                 this.statusText = statusText;
                 this.statusCode = statusCode;
         }
-        public ModelOrders(String orderId,
-                           String messageId,
-                           String cancelId,
-                           String reasonCancel,
-                           String statusCode) {
+        public Order(String orderId,
+                     String messageId,
+                     String cancelId,
+                     String reasonCancel,
+                     String statusCode) {
             this.orderId = orderId;
             this.messageId = messageId;
             this.statusCode = statusCode;
             this.cancelId = cancelId;
             this.reasonCancel = reasonCancel;
         }
-        public ModelOrders (String mPhone,
-                              String panEnd,
-                              String shopId,
-                              String orderId,
-                              String orderSum,
-                              String orderTerm,
-                              String eMailPartner,
-                              String callBackURL) {
+        public Order(String mPhone,
+                     String panEnd,
+                     String shopId,
+                     String orderId,
+                     String orderSum,
+                     String orderTerm,
+                     String eMailPartner,
+                     String callBackURL) {
                 this.mPhone = mPhone;
                 this.panEnd = panEnd;
                 this.shopId = shopId;
@@ -66,7 +64,7 @@ public class ModelOrders {
                 this.callBackURL = callBackURL;
         }
 
-        public ModelOrders(
+        public Order(
                 String orderId,
                 String messageId,
                 String statusText,
@@ -95,11 +93,7 @@ public class ModelOrders {
         }
 
 
-
-    public ModelOrders(String orderId, String messageId, String statusText, ServiceData.StatusCode cancelIsOk) {
-    }
-
-    public String getOrderId() {
+        public String getOrderId() {
                 return orderId;
         }
 
@@ -163,8 +157,8 @@ public class ModelOrders {
                 this.reasonCancel = reasonCancel;
         }
 
-        public ArrayList<Object> getOrderNom() {
-                return orderNom;
+        public List<Object> getOrderNom() {
+                return this.orderNom;
         }
 
         public void setOrderNom(ArrayList<Object> orderNom) {

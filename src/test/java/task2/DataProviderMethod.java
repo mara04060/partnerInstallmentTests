@@ -2,7 +2,7 @@ package task2;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import task2.model.ModelOrders;
+import task2.model.Order;
 
 public class DataProviderMethod {
 
@@ -15,7 +15,7 @@ public class DataProviderMethod {
                                                  String eMailPartner,
                                                  String calBackUrl) throws JsonProcessingException {
         return  new ObjectMapper().writeValueAsString(
-                new ModelOrders(
+                new Order(
                     mPhone,
                     panEnd,
                     shopId,
@@ -33,7 +33,7 @@ public class DataProviderMethod {
                                                   String cancelId,
                                                   String statusCode) throws JsonProcessingException {
         return  new ObjectMapper().writeValueAsString(
-                new ModelOrders(
+                new Order(
                     orderId,
                     messageId,
                     cancelId,
@@ -47,7 +47,7 @@ public class DataProviderMethod {
                                                String cancelId,
                                                String reasonCancel) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(
-                new ModelOrders(
+                new Order(
                     orderId,
                     messageId,
                     cancelId,

@@ -1,38 +1,48 @@
 package task2;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import task2.pojo.CardData;
+import task2.pojo.UserIsCardData;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainParser {
+    private static ParseJSON parseJSON = new ParseJSON();
 
     public static void main(String[] args) throws IOException {
+
+        System.out.println("========================");
+        System.out.println("======= Task* 2.1 ==========");
+
         String json = "{\"isCardAccount\":false,\"data\":{\"order_id\":\"p100\"," +
                 "\"message_id\":\"EB4BFBBCA7167857E0539B5A8F0ACB76\"},\"isRevaluation\":false," +
                 "\"userId\":20069,\"userLogin\":\"55555F3\",\"docIds\":[597405],\"locale\":\"UA\"}\"\n";
-        InterfaceJson modelOne= new JsonToPojo().parse(json, ModelIsCardData.class);
-        System.out.println("========================");
-        System.out.println("======= Task* 2.1 ==========");
         System.out.println("--Data Input " + json);
-        System.out.println("Data OutPut:");
-        System.out.println(modelOne);
-        System.out.println("Unparsingt:");
-        System.out.println( new JsonToPojo().unParse((modelOne) ) );
 
+        InterfaceJson modelOne= parseJSON.toObject(json, CardData.class);
+        System.out.println("Data OutPut: \n" + modelOne);
+
+        String jsonOut =  parseJSON.toJson((modelOne) );
+        System.out.println("Unparsingt:\n"+ jsonOut);
+
+
+
+        System.out.println("======= Task* 2.2 ==========");
 
         json = "[{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"55555F3\",\"locale\":\"UA\"}," +
                 "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"11111F3\",\"locale\":\"UK\"}," +
                 "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}," +
         "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}" + "]";
-        List<ModelUserIsCardData> ModelTwo = new JsonToPojo()
-                .parseList( json, new TypeReference<>(){});
-        System.out.println("======= Task* 2.2 ==========");
         System.out.println("--Data Input " + json);
-        System.out.println("Data OutPut:");
-        System.out.println(ModelTwo.toString());
-        System.out.println("Unparsingt:");
-        System.out.println( new JsonToPojo().unParseList((ModelTwo) ) );
+
+        List<UserIsCardData> ModelTwo = new ParseJSON()
+                .toObjectList( json, new TypeReference<>(){});
+
+
+        System.out.println("Data OutPut:\n" + ModelTwo.toString());
+
+        System.out.println("Unparsingt:\n"+new ParseJSON().listToString((ModelTwo) ));
+        System.out.println(  );
     }
 }

@@ -3,7 +3,7 @@ package task2;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.specification.*;
-import task2.model.ModelOrders;
+import task2.model.Order;
 
 
 public class BaseTest {
@@ -15,7 +15,7 @@ public class BaseTest {
                     .preemptive()
                     .basic(ServiceData.getUsername(),    ServiceData.getPassword() );
     }
-    public ModelOrders methodPost(String postUrl, String jsonBody){
+    public Order methodPost(String postUrl, String jsonBody){
         return startRequestSpecificatiuon()
                     .contentType(ContentType.JSON)
                     .body(jsonBody)
@@ -24,16 +24,16 @@ public class BaseTest {
                     .assertThat()
                     .statusCode(200)
                 .extract()
-                    .as(ModelOrders.class);
+                    .as(Order.class);
     }
-    public ModelOrders methodGet(String getUrl){
+    public Order methodGet(String getUrl){
         return startRequestSpecificatiuon()
                     .get(getUrl)
                 .then().log().body()
                     .assertThat()
                     .statusCode(200)
                 .extract()
-                .as(ModelOrders.class);
+                .as(Order.class);
     }
 
 }

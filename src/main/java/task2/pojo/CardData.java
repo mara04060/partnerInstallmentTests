@@ -1,14 +1,15 @@
-package task2;
+package task2.pojo;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import task2.InterfaceJson;
 
 import java.util.Arrays;
 
-public class ModelIsCardData implements InterfaceJson{
+public class CardData implements InterfaceJson {
         @JsonProperty("isCardAccount")
         private Boolean isCardAccount;
 
         @JsonProperty("data")
-        private ModelDocIds data;
+        private DocIdsData data;
 
         @JsonProperty("isRevaluation")
         private Boolean isRevaluation;
@@ -26,72 +27,58 @@ public class ModelIsCardData implements InterfaceJson{
         private String locale;
 
         // геттеры и сеттеры
-        @JsonProperty("isCardAccount")
         public Boolean isCardAccount() {
             return isCardAccount;
         }
 
-        @JsonProperty("isCardAccount")
         public void setCardAccount(Boolean cardAccount) {
             this.isCardAccount = cardAccount;
         }
 
-        @JsonProperty("data")
-        public ModelDocIds getData() {
+        public DocIdsData getData() {
             return data;
         }
 
-        @JsonProperty("data")
-        public void setData(ModelDocIds data) {
+        public void setData(DocIdsData data) {
             this.data = data;
         }
 
-        @JsonProperty("isRevaluation")
         public boolean isRevaluation() {
             return isRevaluation;
         }
 
-        @JsonProperty("isRevaluation")
         public void setRevaluation(boolean revaluation) {
             this.isRevaluation = revaluation;
         }
 
-        @JsonProperty("userId")
         public Integer getUserId() {
             return userId;
         }
 
-        @JsonProperty("userId")
         public void setUserId(Integer userId) {
             this.userId = userId;
         }
 
-        @JsonProperty("userLogin")
         public String getUserLogin() {
             return userLogin;
         }
 
-        @JsonProperty("userLogin")
         public void setUserLogin(String userLogin) {
             this.userLogin = userLogin;
         }
 
-        @JsonProperty("docIds")
         public Integer[] getDocIds() {
             return docIds;
         }
 
-        @JsonProperty("docIds")
         public void setDocIds(Integer[] docIds) {
             this.docIds = docIds;
         }
 
-        @JsonProperty("locale")
         public String getLocale() {
             return locale;
         }
 
-        @JsonProperty("locale")
         public void setLocale(String locale) {
             this.locale = locale;
         }

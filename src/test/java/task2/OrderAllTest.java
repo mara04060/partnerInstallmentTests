@@ -2,16 +2,19 @@ package task2;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
-import task2.model.ModelOrders;
+import task2.model.Order;
 
 import java.io.IOException;
 
 public class OrderAllTest {
+    private BaseTest baseTest = new BaseTest();
+    
+    
     @Test(groups = {"POSITIVE", "FULL_PROCES",  "ALL"}, priority = 10, timeOut = 15600L, testName = "Positive Create|Get|Clear - Method API Order")
-    public static void createOrderPositiveTest() throws IOException {
+    public void createOrderPositiveTest() throws IOException {
 
 // Step-1
-        ModelOrders firstResponse = new BaseTest().methodPost(
+        Order firstResponse = baseTest.methodPost(
                 "createOrder/" + ServiceData.getPartner(),
                 DataProviderMethod.getCreateOrderDataInput(
                             ServiceData.getMPhone(),
@@ -30,7 +33,7 @@ public class OrderAllTest {
 
 // Step-2
         System.out.println("Step2---Get:");
-        ModelOrders twoRespose = new BaseTest().methodGet(
+        Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
                         +"/" + ServiceData.getPartner()
                         +"/?orderId=" + firstResponse.getOrderId() +"&messageId="+firstResponse.getMessageId()
@@ -42,7 +45,7 @@ public class OrderAllTest {
         ServiceData.sleepMode(2);
 
 // Step-3
-        ModelOrders requestClear = new BaseTest().methodPost(
+        Order requestClear = baseTest.methodPost(
                 "cancelOrder/" + ServiceData.getPartner(),
                 DataProviderMethod.getCleaOrderDataInput(
                             twoRespose.getOrderId(),
@@ -50,7 +53,7 @@ public class OrderAllTest {
                             "cancelP"+twoRespose.getOrderId(),
                             ServiceData.getReasonCancel())
         );
-        ModelOrders expected = new ModelOrders(
+        Order expected = new Order(
                 twoRespose.getOrderId(),
                 null,
                 "Отмена заказа с номером "+ firstResponse.getOrderId() + " в обработке.",
@@ -89,7 +92,7 @@ public class OrderAllTest {
         };
     }
     @Test(groups = {"NEGATIVE", "CREATE_ORDER", "ALL"}, priority = 50, dataProvider = "postOrderTest",timeOut = 15600L, testName = "Negative CreateOrder")
-    public static void createOrderNegativeTest(
+    public void createOrderNegativeTest(
            String partner,
            String mPhone,
            String panEnd,
@@ -102,7 +105,7 @@ public class OrderAllTest {
            String expectedStatusCode) throws IOException {
 
 
-        Assert.assertEquals( new BaseTest().methodPost(
+        Assert.assertEquals( baseTest.methodPost(
                 "createOrder/"+partner,
                 DataProviderMethod.getCreateOrderDataInput(
                         mPhone,
@@ -122,9 +125,9 @@ public class OrderAllTest {
                 {"p03","", ServiceData.StatusCode.NO_APP.toString() }};
     }
     @Test(groups = {"NEGATIVE",  "GET_ORDER", "ALL"}, priority = 70, dataProvider = "getOrderTest1", timeOut = 15600L, testName = "Negative getOrder")
-    public static void getOrderNoIdsNegativeTest(String orderIdIn, String messageIdIn, String expectedStatus) {
+    public void getOrderNoIdsNegativeTest(String orderIdIn, String messageIdIn, String expectedStatus) {
 
-        ModelOrders twoRespose = new BaseTest().methodGet(
+        Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
                         +"/" + ServiceData.getPartner()
                         +"/?orderId="+orderIdIn+"&messageId="+messageIdIn
@@ -138,8 +141,8 @@ public class OrderAllTest {
                 {"c120", "B8F3737EE0712C81E0539B5A8F0A34E7", ServiceData.StatusCode.REQUEST_NOT_MATCH.toString() }};
     }
     @Test(groups = {"NEGATIVE", "CONFIRM_ORDER", "ALL"}, priority = 90, dataProvider = "confirmOrderTest", timeOut = 15600L, testName = "Negative confirmOrder")
-    public static void confirmOrderNotMatchNegativeTest(String orderIdIn, String messageIdIn, String expectedCodeStatus ) throws IOException {
-         ModelOrders confirmResponse = new BaseTest().methodPost(
+    public void confirmOrderNotMatchNegativeTest(String orderIdIn, String messageIdIn, String expectedCodeStatus ) throws IOException {
+         Order confirmResponse = baseTest.methodPost(
                 "confirmOrder/"+ServiceData.getPartner(),
                 DataProviderMethod.getConfirmOrderDataInput(
                         orderIdIn,
