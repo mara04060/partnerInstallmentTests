@@ -2,7 +2,7 @@ package task2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ModelUserIsCardData implements InterfaceJsonList {
+public class ModelUserIsCardData {
         @JsonProperty("isCard")
         private Boolean isCard;
 
@@ -58,7 +58,7 @@ public class ModelUserIsCardData implements InterfaceJsonList {
 
         @Override
         public String toString() {
-            return "{\n" +
+            return " /* ModelUserIsCardData */ {\n" +
                     "\n \t isCard=" + isCard +
                     ", \n \t userPass: '" + userPass + '\'' +
                     ", \n \t userLogin: '" + userLogin + '\'' +
