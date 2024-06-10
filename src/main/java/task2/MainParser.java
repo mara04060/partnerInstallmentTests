@@ -22,9 +22,8 @@ public class MainParser {
 
         InterfaceJson modelOne= parseJSON.toObject(json, CardData.class);
         System.out.println("Data OutPut: \n" + modelOne);
-
-        String jsonOut =  parseJSON.toJson((modelOne) );
-        System.out.println("Unparsingt:\n"+ jsonOut);
+//      Проверка, что Обьект можно опять преобразовать к иходной строке
+        System.out.println("toJson:\n"+  parseJSON.toJson(modelOne) );
 
 
 
@@ -36,13 +35,11 @@ public class MainParser {
         "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}" + "]";
         System.out.println("--Data Input " + json);
 
-        List<UserIsCardData> ModelTwo = new ParseJSON()
-                .toObjectList( json, new TypeReference<>(){});
-
+        List<UserIsCardData> ModelTwo = parseJSON.toObjectList( json, new TypeReference<>(){});
 
         System.out.println("Data OutPut:\n" + ModelTwo.toString());
+//      Проверка, что Обьект можно опять преобразовать к иходной строке
+        System.out.println("toJson :\n"+parseJSON.listToString((ModelTwo) ));
 
-        System.out.println("Unparsingt:\n"+new ParseJSON().listToString((ModelTwo) ));
-        System.out.println(  );
     }
 }
