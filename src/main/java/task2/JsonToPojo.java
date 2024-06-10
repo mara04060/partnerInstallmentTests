@@ -20,8 +20,8 @@ public class JsonToPojo {
         return new ObjectMapper().writeValueAsString(model);
     }
 
-    public List<ModelUserIsCardData> parseList(String json, TypeReference<List<ModelUserIsCardData>> className ) throws IOException {
-        return new ObjectMapper().readValue(json.getBytes(),  className) ;
+    public <T> List<T> parseList(String json, TypeReference<List<T>> className ) throws IOException {
+        return new ObjectMapper().readValue(json.getBytes(), className) ;
     }
 
     public  String unParseList(List<InterfaceJsonList> model) throws JsonProcessingException {

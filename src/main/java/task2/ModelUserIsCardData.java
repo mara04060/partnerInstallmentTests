@@ -2,7 +2,7 @@ package task2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ModelUserIsCardData {
+public class ModelUserIsCardData implements InterfaceJsonList {
         @JsonProperty("isCard")
         private Boolean isCard;
 

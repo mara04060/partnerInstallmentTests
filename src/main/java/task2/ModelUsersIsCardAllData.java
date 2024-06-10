@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 
-public class ModelUsersIsCardAllData implements InterfaceJsonList {
+public class ModelUsersIsCardAllData {
         @JsonProperty("modelUserData")
         private List<ModelUserIsCardData> modelUserData;
 
