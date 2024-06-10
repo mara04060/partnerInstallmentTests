@@ -22,6 +22,7 @@ public class MainParser {
 
         InterfaceJson modelOne= parseJSON.toObject(json, CardData.class);
         System.out.println("Data OutPut: \n" + modelOne);
+
 //      Проверка, что Обьект можно опять преобразовать к иходной строке
         System.out.println("toJson:\n"+  parseJSON.toJson(modelOne) );
 
@@ -38,6 +39,7 @@ public class MainParser {
         List<UserIsCardData> ModelTwo = parseJSON.toObjectList( json, new TypeReference<>(){});
 
         System.out.println("Data OutPut:\n" + ModelTwo.toString());
+
 //      Проверка, что Обьект можно опять преобразовать к иходной строке
         System.out.println("toJson :\n"+parseJSON.listToString((ModelTwo) ));
 
