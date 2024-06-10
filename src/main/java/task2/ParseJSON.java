@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class ParseJSON {
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
 
     public InterfaceJson toObject(String json, Class className ) throws IOException {;

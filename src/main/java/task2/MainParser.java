@@ -32,13 +32,14 @@ public class MainParser {
 
         json = "[{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"55555F3\",\"locale\":\"UA\"}," +
                 "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"11111F3\",\"locale\":\"UK\"}," +
-                "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}," +
-        "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}" + "]";
+                "{\"isCard\":true,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"US\"}," +
+                "{\"isCard\":false,\"userPass\":\"test\",\"userLogin\":\"1001F3\",\"locale\":\"UA\"}" +
+                "]";
         System.out.println("--Data Input " + json);
 
         List<UserIsCardData> ModelTwo = parseJSON.toObjectList( json, new TypeReference<>(){});
 
-        System.out.println("Data OutPut:\n" + ModelTwo.toString());
+        System.out.println("Data Output:\n" + ModelTwo.toString());
 
 //      Проверка, что Обьект можно опять преобразовать к иходной строке
         System.out.println("toJson :\n"+parseJSON.listToString((ModelTwo) ));
