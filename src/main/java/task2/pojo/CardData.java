@@ -7,25 +7,18 @@ import java.util.Arrays;
 public class CardData implements InterfaceJson {
         @JsonProperty("isCardAccount")
         private Boolean isCardAccount;
-
         @JsonProperty("data")
         private DocIdsData data;
-
         @JsonProperty("isRevaluation")
         private Boolean isRevaluation;
-
         @JsonProperty("userId")
         private Integer userId;
-
         @JsonProperty("userLogin")
         private String userLogin;
-
         @JsonProperty("docIds")
         private Integer[] docIds;
-
         @JsonProperty("locale")
         private String locale;
-
         // геттеры и сеттеры
         public Boolean isCardAccount() {
             return isCardAccount;
