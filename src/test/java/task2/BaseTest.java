@@ -27,7 +27,6 @@ public class BaseTest {
                     .as(Order.class);
     }
     public Order methodGet(String getUrl){
-        System.out.println("Start URL"+getUrl);
         return startRequestSpecificatiuon()
                     .get(getUrl)
                 .then().log().body()
