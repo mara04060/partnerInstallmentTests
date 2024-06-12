@@ -31,8 +31,6 @@ public class OrderAllTest {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.IN_PROCESSING.toString() );
 
-
-
 // Step-2
         Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
