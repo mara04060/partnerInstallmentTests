@@ -2,6 +2,7 @@ package task2;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import task2.model.Order;
 
 import java.io.IOException;
@@ -27,29 +28,28 @@ public class OrderAllTest {
                             ServiceData.getCalBackUrlr()
                     )
                 );
-        Assert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.IN_PROCESSING.toString() );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(firstResponse.getStatusCode(), ServiceData.StatusCode.IN_PROCESSING.toString() );
 
-        ServiceData.sleepMode(2);
+
 
 // Step-2
-        System.out.println("Step2---Get:");
         Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
-                        +"/?orderId=" + firstResponse.getOrderId()+"&messageId="+firstResponse.getMessageId()
+                        +"?orderId=" + firstResponse.getOrderId()+"&messageId="+firstResponse.getMessageId()
                     );
-        Assert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
-        Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
+        softAssert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
+        softAssert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
 
-//        ServiceData.sleepMode(2);
 
 // Step-3
         Order requestClear = baseTest.methodPost(
                 "cancelOrder/" + ServiceData.getPartner(),
                 DataProviderMethod.getCleaOrderDataInput(
                             twoRespose.getOrderId(),
-                            null,
-                            "cancelP"+twoRespose.getOrderId(),
-                            ServiceData.getReasonCancel())
+                            twoRespose.getMessageId(),
+                            "cancelPart-140-01",
+                            "відмова клієнта")
         );
         Order expected = new Order(
                 twoRespose.getOrderId(),
@@ -57,8 +57,10 @@ public class OrderAllTest {
                 "Отмена заказа с номером "+ firstResponse.getOrderId() + " в обработке.",
                 ServiceData.StatusCode.CANCEL_IS_OK.toString() );
 
-        Assert.assertEquals(requestClear.getStatusCode(), expected.getStatusCode());
-        Assert.assertEquals(requestClear.getStatusText(), expected.getStatusText());
+
+        softAssert.assertEquals(requestClear.getStatusCode(), expected.getStatusCode());
+        softAssert.assertEquals(requestClear.getStatusText(), expected.getStatusText());
+        softAssert.assertAll();
     }
 
     @DataProvider(name = "postOrderTest")
