@@ -34,7 +34,7 @@ public class OrderAllTest {
 // Step-2
         Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
-                        +"?orderId=" + firstResponse.getOrderId()
+                        +"?orderId=" + firstResponse.getOrderId()+"&messageId=" + firstResponse.getMessageId()
                     );
         softAssert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
         softAssert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
