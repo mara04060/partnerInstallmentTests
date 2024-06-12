@@ -35,14 +35,12 @@ public class OrderAllTest {
         System.out.println("Step2---Get:");
         Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
-                        +"/" + ServiceData.getPartner()
-                        +"/?orderId=" + firstResponse.getOrderId() +"&messageId="+firstResponse.getMessageId()
+                        +"/?orderId=" + firstResponse.getOrderId()+"&messageId="+firstResponse.getMessageId()
                     );
-
         Assert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
         Assert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
 
-        ServiceData.sleepMode(2);
+//        ServiceData.sleepMode(2);
 
 // Step-3
         Order requestClear = baseTest.methodPost(
