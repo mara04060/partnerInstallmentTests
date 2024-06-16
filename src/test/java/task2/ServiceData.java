@@ -43,7 +43,8 @@ public class ServiceData {
         NO_APP,
         NO_IDS,
         INST_ALLOWED_OK,
-        CANCEL_IS_OK
+        CANCEL_IS_OK,
+        FINAL_CANCEL_OK
     }
     static String getBaseUrl() {
         return properties.getProperty("api.url");

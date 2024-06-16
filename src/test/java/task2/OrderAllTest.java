@@ -34,10 +34,10 @@ public class OrderAllTest {
 // Step-2
         Order twoRespose = baseTest.methodGet(
                 "getOrder/" + ServiceData.getPartner()
-                        +"?orderId=" + firstResponse.getOrderId()+"&messageId=" + firstResponse.getMessageId()
+                        +"?orderId=" + firstResponse.getOrderId()
                     );
         softAssert.assertEquals(twoRespose.getOrderId(), firstResponse.getOrderId());
-        softAssert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.INST_ALLOWED_OK.toString());
+        softAssert.assertEquals(twoRespose.getStatusCode(), ServiceData.StatusCode.FINAL_CANCEL_OK.toString());
 
 
 // Step-3
